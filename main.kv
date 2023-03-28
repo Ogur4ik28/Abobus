@@ -1,0 +1,62 @@
+#:kivy 2.2.0
+
+<MainWindow>:
+	icon: "book"
+	orientation: 'vertical'
+
+	MDTopAppBar:
+		# MDRectangleFlatButton:
+			# text: 'theme'
+		title: 'Dictionary'
+
+	MDBottomNavigation:
+		MDBottomNavigationItem:
+			name: "screen search"
+			text: "search"
+			icon: "magnify"
+			id: bottom_nav
+
+			MDBoxLayout:
+				orientation: 'vertical'
+				MDBoxLayout:
+					MDTextField:
+						id: search_name
+						hint_text: "Enter the word to be found"
+						mode: "rectangle"
+
+					# MDRectangleFlatButton:
+					# 	id: theme
+					# 	text: "Swich theme"
+					# 	on_release:
+					# 		app.name_search_and_populae_result_list(root.ids.set_theme)
+							
+					MDRectangleFlatButton:
+						text: "Search"
+						on_release:
+							app.name_search_and_populate_results_list(root.ids.search_name.text)
+
+				ScrollView:
+					size_hint: 1, 6
+					MDList:
+						id: search_results
+				Widget:
+
+
+		MDBottomNavigationItem:
+			name : "Dictionary"
+			text : "List of all words"
+			icon: "book"
+			MDScrollView:
+				MDList:
+					id: container
+					size_hint_y: None
+					height: self.minimum_height
+					adaptive_height: True
+			MDBoxLayout:
+				orientation: 'vertical'
+
+# <SearchResultItem>:
+# 	IconLeftWidget:
+# 		icon: "phone"
+# 	RightButton:
+# 		icon: "minus"
